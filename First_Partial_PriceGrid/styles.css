@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap');
+
+html{
+    font-family: 'Karla', sans-serif;
+}
+
+body{
+    background-color:  #E5EFF5;
+  }
+
+  h2, h3 {
+    font-weight: 700;
+}
+
+p{
+  line-height: 1.9;
+  font-weight: 400;
+}
+
+button{
+    background-color: #BFDF32;
+    justify-content: center;
+    border: 0;
+    width: 250px;
+    height: 40px;
+    border-radius: .3rem;
+    color: white;
+    font-weight: 700;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  }
+
+
+.full-container {
+    width: 600px; 
+    height: 400px;/* Ancho del contenedor principal */
+    background-color: #f0f0f0; /* Color de fondo */
+    margin: 0 auto; /* Margen automático para centrar horizontalmente */
+    text-align: center;
+    box-shadow: rgba(100, 100, 111, 0.2) 07px 7px 29px 29px;
+    display: flex; /* Utilizar flexbox para crear dos columnas */
+    flex-direction: column; /* Colocar elementos en columnas */
+    border-radius: 10px !important;
+
+   
+}
+
+.top-container {
+    height: 100px; /* Alto del contenedor superior */
+    background-color: #FFFF; /* Color de fondo del contenedor superior */
+    margin-bottom: 20px;
+    text-align:left;
+    padding-left: 30px;
+    border-radius: 10px !important;
+
+    
+}
+
+.price {
+    display: flex;
+}
+
+.left {
+    float:left;
+    flex: 1; 
+    text-align: left; 
+    height: 270px;
+    padding-left: 20px; 
+    background-color: #2AB3B1;
+    border-radius: 0 0 0 10px !important;
+
+}
+
+.right{
+  float:left;
+  flex: 1; 
+  text-align: left; 
+  padding-left: 20px; 
+  background-color: #4ABEBC;
+  border-radius: 0 0 10px 0 !important;
+  justify-content: center;
+  align-items: center;
+
+
+}
+
+.column {
+padding-top: 60px;
+display: flex;
+color:white;
+}
+
