@@ -1,0 +1,18 @@
+<%- include ("partials/header"); -%>    
+
+    <div class="container">
+      <h1>Hello, <%= name %>
+      </h1>
+
+      <ul>
+        <!-- List of fruits-->
+        <% fruits.forEach((fruit) =>{ %>
+            <li><%= fruit.name %>: <%= fruit.qty %></li>
+        <% });%>
+
+      </ul>
+     
+    </div>
+<%- include ("partials/footer"); -%>    
+
+      

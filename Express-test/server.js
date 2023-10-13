@@ -22,10 +22,23 @@ app.get("/hellow",(req, res) =>{
     res.send();
 });
 
-app.get("/",(req, res) =>{
+const fruits = [
+{name: "apple", qty:3}, 
+{name: "grapes", qty:13}, 
+{name:"banana", qty: 5}, 
+{name: "pinapple-pen", qty: 1}
+];
+
+
+app.route("/").get((req, res) =>{
     console.log(__dirname);
-    res.render("index",{ name: "julian"});
-    
+    res.render("index",{ name: "Julian", fruits: fruits});
+})
+.post((req, res) => {
+    var fruit = req.body.fruit;
+    var qty = req.body.qty;
+    fruits.push({ name: fruit, qty: qty});
+    res.redirect("/");
 });
 
 app
@@ -56,7 +69,10 @@ app.get("/sellProduct/:productName.:model/detail",(req, res) =>{
     
 });
 
-
+app.use((err, req, res, nect)=>{
+    console.error(err.message);
+    res.status(500).send("There was an error in the app.") ;
+});
 
 
 app.listen(3000, () =>{
