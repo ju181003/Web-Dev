@@ -1,4 +1,5 @@
 const express = require("express");
+const https = require("https");
 const bodyParser = require("body-parser");
 
 const app = express();
@@ -10,8 +11,6 @@ app.use(express.static("public"));
 app.engine("ejs", require("ejs").renderFile);
 
 app.set("view engine", "ejs");
-
-
 
 
 app.get("/hellow",(req, res) =>{
@@ -28,6 +27,28 @@ const fruits = [
 {name:"banana", qty: 5}, 
 {name: "pinapple-pen", qty: 1}
 ];
+
+const url = "https://v2.jokeapi.dev/joke/Miscellaneous?amount=2&format=json";
+
+app.route("/joke").get((req, res) => {
+    https.get(url, (response) => {
+        console.log(response.statusCode);
+        if(response.statusCode==200){
+            response.on("data", (data)=>{
+                var jokes = JSON.parse(data);
+                console.log(jokes);
+                res.setHeader("Content-Type", "text/html");
+                jokes.jokes.forEach((joke) => {
+                    console.log(jokes);
+                    res.write(
+                        "<h2>" + joke.setup + "</h2><br/><p>" + joke.delivery + "</p>"
+                    );
+                });
+                res.send();
+            });
+        }
+    });
+});
 
 
 app.route("/").get((req, res) =>{
@@ -73,6 +94,7 @@ app.use((err, req, res, nect)=>{
     console.error(err.message);
     res.status(500).send("There was an error in the app.") ;
 });
+
 
 
 app.listen(3000, () =>{
