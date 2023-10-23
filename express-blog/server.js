@@ -16,8 +16,15 @@ let name;
 
 app.get("/", (req, res) => {
   //res.sendFile(__dirname + "/public/html/index.html");
-  res.render("index");
+  res.render("index", {name});
+
 });
+
+app.post("/login", (req, res)=>{
+    name = req.body.name;
+    posts.push({title: "My Title", content: longContent});
+    res.render("home", {name, posts});
+})
 
 app.listen(3000, (err) => {
   console.log("Listening on port 3000");
